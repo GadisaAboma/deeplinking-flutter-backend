@@ -32,11 +32,11 @@ async function bootstrap() {
   app.use(urlencoded({ extended: true, limit: '50mb' }));
   app.useStaticAssets(join(__dirname, '../..', 'src/.well-known'), {
     prefix: '/.well-known',
-    // setHeaders: (res, path, stat) => {
-    //   if (path.endsWith('apple-app-site-association')) {
-    //     res.setHeader('Content-Type', 'application/json');
-    //   }
-    // },
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith('apple-app-site-association')) {
+        res.setHeader('Content-Type', 'application/json');
+      }
+    },
   });
   await app.listen(PORT);
   const date = new Date();
