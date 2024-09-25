@@ -39,6 +39,5 @@ async function bootstrap() {
     },
   });
   await app.listen(PORT);
-  const date = new Date();
 }
 bootstrap();
